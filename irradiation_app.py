@@ -27,9 +27,19 @@ with st.expander('Data'):
 with st.sidebar:
   st.header("Input Features")
   Pressure = st.number_input('Pressure (inHg)', min_value=30.4, max_value=30.6, value=30.5)
-  Humidity = st.number_input('Humidity ', min_value=0, max_value=100)
-  bill_length_mm = st.slider('Bill length (mm)', 32.1, 59.6, 43.9)
-  bill_depth_mm = st.slider('Bill depth (mm)', 13.1, 21.5, 17.2)
-  flipper_length_mm = st.slider('Flipper length (mm)', 172.0, 231.0, 201.0)
-  body_mass_g = st.slider('Body mass (g)', 2700.0, 6300.0, 4207.0)
-  gender = st.selectbox('Gender', ('male', 'female'))
+  temperature = st.number_input('Temperature', min_value=30, max_value=80, value=55)
+  humidity = st.number_input('Humidity', min_value=0, max_value=100, value=50)
+  wind_direction = st.number_input('Wind Direction (Degrees)', min_value=0, max_value=360, value=180)
+  speed = st.number_input('Speed', min_value=0, max_value=42, value=21)
+  month = st.slider('Month', min_value=9, max_value=12, value=9)
+  day = st.number_input('Day', min_value=1, max_value=31, value=15)
+  hour = st.number_input('Hour', min_value=0, max_value=23, value=6)
+  minute = st.number_input('Minute', min_value=0, max_value=59, value=0)
+  second = st.number_input('Second', min_value=0, max_value=59, value=0)
+
+
+
+
+
+
+
