@@ -20,3 +20,8 @@ with st.expander('Data'):
   y_raw = df.Radiation
   y_raw
 
+#Input Features
+with st.sidebar:
+  st.header("Input Features")
+  Pressure = st.number_input('Pressure (inHg)', min_value=30.4, max_value=30.6, value=30.5)
+  
