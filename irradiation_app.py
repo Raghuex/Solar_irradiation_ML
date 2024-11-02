@@ -26,7 +26,7 @@ with st.expander('Data'):
 #Input Features
 with st.sidebar:
   st.header("Input Features")
-  Pressure = st.number_input('Pressure (inHg)', min_value=30.4, max_value=30.6, value=30.5)
+  Pressure = st.number_input('Pressure', min_value=30.4, max_value=30.6, value=30.5)
   temperature = st.number_input('Temperature', min_value=30, max_value=80, value=55)
   humidity = st.number_input('Humidity', min_value=0, max_value=100, value=50)
   wind_direction = st.number_input('WindDirection(Degrees)', min_value=0, max_value=360, value=180)
