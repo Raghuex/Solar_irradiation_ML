@@ -13,7 +13,7 @@ with st.expander('Data'):
   df
 
   st.write('**X**')
-  X_raw = df.drop('Radiation', axis=1)
+  X_raw = df.drop(columns=[df.columns[0], 'Radiation'], axis=1)
   X_raw
 
   st.write('**y**')
