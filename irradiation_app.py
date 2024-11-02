@@ -5,10 +5,7 @@ import pandas as pd
 
 st.title("Solar Irradiation Prediction")
 
-#Input Features
-with st.sidebar:
-  st.header("Input Features")
-  Pressure = st.number_input('Pressure (inHg)', min_value=30.4, max_value=30.6, value=30.5)
+
   
 
 st.info('This is a prediction model based on XGBoost Regressor')
@@ -26,4 +23,8 @@ with st.expander('Data'):
   y_raw = df.Radiation
   y_raw
 
-
+#Input Features
+with st.sidebar:
+  st.header("Input Features")
+  Pressure = st.number_input('Pressure (inHg)', min_value=30.4, max_value=30.6, value=30.5)
+  Humidity = st.number_input('Humidity ', min_value=0, max_value=100)
