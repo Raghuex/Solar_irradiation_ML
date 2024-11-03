@@ -146,16 +146,16 @@ model_xgb = XGBRegressor(
 
 model_xgb.fit(X_train, y_train)
 
-if st.button('Predict'):
-    # Preprocess `input_df` if necessary (e.g., scaling)
-    # prediction = model_xgb.predict(input_df) may require DMatrix conversion in XGBoost
-    dmatrix_input = xgb.DMatrix(input_df)
-    
-    # Perform prediction
-    prediction = model_xgb.predict(dmatrix_input)
-    
-    # Display the prediction result
-    st.write('**Predicted Solar Radiation**:', prediction[0])
 
 
+
+# prediction _________________________
+
+dmatrix_input = xgb.DMatrix(input_df)
+
+# Perform prediction
+prediction = model_xgb.predict(dmatrix_input)
+
+# Display the prediction result
+st.write('**Predicted Solar Radiation**:', prediction[0])
 
