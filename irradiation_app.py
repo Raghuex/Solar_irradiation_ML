@@ -124,9 +124,22 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
+# XGBoost Regressor
+from xgboost import XGBRegressor
 
+model_xgb = XGBRegressor(
+    learning_rate=0.01,        
+    max_depth=6,             
+    n_estimators=200,         
+    subsample=0.9,             
+    colsample_bytree=0.9,      
+    gamma=0.1,                       
+    random_state=42
+)
 
-  
+model_xgb.fit(X_train, y_train)
+
+y_prediction = model_xgb.predict(X_test)
 
 
 
