@@ -70,45 +70,37 @@ features_to_transform = ['Temperature', 'Pressure', 'Humidity', 'Speed', 'WindDi
 standard_scaler = StandardScaler()
 min_max_scaler = MinMaxScaler()
 
-# Create a select slider to choose a feature
-selected_feature = st.select_slider('Select a feature to view transformations:', options=features_to_transform)
-
-# Original distribution
-with st.expander("Normal Distribution"):
-    fig, ax = plt.subplots()
-    pd.DataFrame(X[selected_feature]).hist(ax=ax, bins=50)
-    ax.set_title("Normal Distribution")
+for i in features_to_transform:
+    # Create a figure with 5 vertical subplots
+    fig, (ax1, ax2, ax3, ax4, ax5) = plt.subplots(5, 1, figsize=(8, 10))
+    
+    # Original distribution
+    pd.DataFrame(X[i]).hist(ax=ax1, bins=50)
+    ax1.set_ylabel('Normal')
+    
+    # Log transformation
+    pd.DataFrame(np.log(X[i] + 1)).hist(ax=ax2, bins=50)
+    ax2.set_ylabel('Log')
+    
+    # Box-Cox transformation
+    pd.DataFrame(stats.boxcox(X[i] + 1)[0]).hist(ax=ax3, bins=50)
+    ax3.set_ylabel('Box Cox')
+    
+    # StandardScaler transformation
+    scaled_data_standard = standard_scaler.fit_transform(X[[i]])
+    pd.DataFrame(scaled_data_standard).hist(ax=ax4, bins=50)
+    ax4.set_ylabel('Standard')
+    
+    # MinMaxScaler transformation
+    scaled_data_minmax = min_max_scaler.fit_transform(X[[i]])
+    pd.DataFrame(scaled_data_minmax).hist(ax=ax5, bins=50)
+    ax5.set_ylabel('MinMax')
+    
+    # Display the figure in Streamlit
     st.pyplot(fig)
 
-# Log transformation
-with st.expander("Log Transformation"):
-    fig, ax = plt.subplots()
-    pd.DataFrame(np.log(X[selected_feature] + 1)).hist(ax=ax, bins=50)
-    ax.set_title("Log Transformation")
-    st.pyplot(fig)
 
-# Box-Cox transformation
-with st.expander("Box-Cox Transformation"):
-    fig, ax = plt.subplots()
-    pd.DataFrame(stats.boxcox(X[selected_feature] + 1)[0]).hist(ax=ax, bins=50)
-    ax.set_title("Box-Cox Transformation")
-    st.pyplot(fig)
 
-# StandardScaler transformation
-with st.expander("Standard Scaling"):
-    fig, ax = plt.subplots()
-    scaled_data_standard = standard_scaler.fit_transform(X[[selected_feature]])
-    pd.DataFrame(scaled_data_standard).hist(ax=ax, bins=50)
-    ax.set_title("Standard Scaling")
-    st.pyplot(fig)
-
-# MinMaxScaler transformation
-with st.expander("Min-Max Scaling"):
-    fig, ax = plt.subplots()
-    scaled_data_minmax = min_max_scaler.fit_transform(X[[selected_feature]])
-    pd.DataFrame(scaled_data_minmax).hist(ax=ax, bins=50)
-    ax.set_title("Min-Max Scaling")
-    st.pyplot(fig)
 
 
 
