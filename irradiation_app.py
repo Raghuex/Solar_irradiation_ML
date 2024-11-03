@@ -66,6 +66,13 @@ data = {
 # Convert the dictionary to a DataFrame
 input_df = pd.DataFrame([data])
 
+with st.expander('Input features'):
+  st.write('**Input for Solar Radiation**')
+  input_df
+
+
+
+
 features_to_transform = ['Temperature', 'Pressure', 'Humidity', 'Speed', 'WindDirection(Degrees)']
 standard_scaler = StandardScaler()
 min_max_scaler = MinMaxScaler()
