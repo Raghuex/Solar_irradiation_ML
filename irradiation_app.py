@@ -100,9 +100,15 @@ for i in features_to_transform:
     st.pyplot(fig)
 
 
-
-
-
+# starting to transform 
+transform = {
+    'Temperature': np.log(X['Temperature'] + 1),
+    'Pressure': stats.boxcox(X['Pressure']+1)[0],
+    'Humidity': stats.boxcox(X['Humidity']+1)[0],
+    'Speed': np.log(X['Speed'] + 1),
+    'WindDirection(Degrees)': min_max_scaler.fit_transform(X[['WindDirection(Degrees)']])
+    
+}
 
 
 
