@@ -78,6 +78,21 @@ with st.expander('Input features'):
 
 
 
+
+
+
+
+# prediction _________________________
+
+
+prediction = model_xgb.predict(input_df)
+st.write('**Predicted Solar Radiation**:', prediction[0])
+
+
+
+
+
+
 # features_to_transform = ['Temperature', 'Pressure', 'Humidity', 'Speed', 'WindDirection(Degrees)']
 # standard_scaler = StandardScaler()
 # min_max_scaler = MinMaxScaler()
@@ -150,14 +165,4 @@ with st.expander('Input features'):
 # )
 
 # model_xgb.fit(X_train, y_train)
-
-
-
-
-# prediction _________________________
-
-
-prediction = model_xgb.predict(input_df)
-st.write('**Predicted Solar Radiation**:', prediction[0])
-
 
